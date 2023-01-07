@@ -1,0 +1,123 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ZFourThree/Made-in-Heaven/main/Made%20in%20Heaven", true))()
+--[[ 
+
+Keep this loadstring at the top ^^^ and put code below it
+you basically just code your own stuff hereits very simple
+
+Here are all the functions:
+--
+TP(x, y, z) --this basically tps you forward you can change it and make your own tp with a custom sound :D
+--
+Keybind(keybind, script, callback)
+--
+PlaySound(id, true/false) -- if its true then the sound will stop automatically once sound is finished playing if false then it will loop (MUST HAVE A BOOMBOX TO USE THIS FUNCTION) (SOUND CAN BE DELAYED DEPENDING ON HOW BAD UR PING IS if over 200 then it will defo be delayed)
+--
+silentchat(msg) -- says something in chat but no one can see it unless you use chat spy (this can work to use nova stand e.g "Summon!" )
+--
+Command(word, script, callback)
+--
+Notif("text here", time, soundid) -- notifies you
+--
+
+NOTE: DO NOT PUT ANY CODE IN HERE
+
+]]
+
+Summon_Vanish = false
+Keybind("c", function()
+    if Summon_Vanish == false then
+        Summon_Vanish = true
+        PlaySound(5059139543, true)
+        silentchat("")
+        chat("MADE IN HEAVEN")
+    elseif Summon_Vanish == true then
+        silentchat("")
+        Summon_Vanish = false
+    end
+end)
+
+-- TIME SKIP FOR MIH
+Keybind("z", function()
+    PlaySound(6515725987, true)
+    TP(0, 0, -5)
+    TweenService:Create(workspace.CurrentCamera, TweenInfo.new(0.5), {FieldOfView = 85}):Play()
+    TweenService:Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(0.8), {Saturation = -1}):Play()
+    local blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+    TweenService:Create(blur, TweenInfo.new(0.8), {Size = 10}):Play()
+    wait(0.3)
+    TweenService:Create(workspace.CurrentCamera, TweenInfo.new(0.5), {FieldOfView = 70}):Play()
+    game:GetService("Lighting").ColorCorrection.TintColor = Color3.fromRGB(250, 250, 250)
+    TweenService:Create(blur, TweenInfo.new(0.8), {Size = 0}):Play()
+    wait(0.3)
+    TweenService:Create(game:GetService("Lighting").ColorCorrection, TweenInfo.new(0.8), {Saturation = 0}):Play()
+end)
+
+--MASS TELEPORT
+Keybind("j", function()
+    PlaySound(6759981774, true)
+    TP(math.random(0, 10), 0, 0) wait(0.1)
+    TP(math.random(-10, 0), 0, 0) wait(0.1)
+    TP(0, math.random(0, 10), math.random(0, 10)) wait(0.1)
+    TP(0, 0, math.random(0, 10)) wait(0.1)
+    TP(0, 0, -30) wait(0.1)
+end)
+
+-- idek
+Keybind("b", function()
+    PlaySound(6515717585, true, true)
+    wait(.1)
+    TP(0, 0, -7)
+    wait(.3)
+    TP(0, 0, -7)
+    wait(.15)
+    TP(0, 0, -7)
+    wait(.2)
+    TP(0, 0, -7)
+    wait(.25)
+    TP(0, 0, -7)
+end)
+
+-- telorts above
+Keybind("l", function()
+    local Character = game.Players.LocalPlayer.Character
+    local bd = Instance.new("BodyVelocity", Character.Head);
+    bd.Name = "MIHvelocity"
+    bd.MaxForce = Vector3.new(2500, 2500, 2500);
+    bd.Velocity = (Character.Head.CFrame * CFrame.Angles(math.rad(2), 0, 0)).lookVector * 0;
+    
+    PlaySound(6515725987, true, true)
+    TP(0, 30, -2)
+    wait(1)
+    bd:Destroy()
+end)
+
+Barrage_Sound = 6750494233
+Unbarrage_Sound = 6755297853
+
+BarrageToggle = false
+Keybind("k", function()
+    if BarrageToggle == false then
+        BarrageToggle = true
+        PlaySound(Barrage_Sound, true)
+        silentchat("Barrage!")
+    elseif BarrageToggle == true then
+        BarrageToggle = false
+        PlaySound(Unbarrage_Sound, true)
+        silentchat("Nobarrage!")
+    end
+end)
+
+Summon_Vanish = false
+SummonSound = 8063237223
+
+Keybind("m", function()
+    if Summon_Vanish == false then
+        Summon_Vanish = true
+        PlaySound(2, true)
+        silentchat("")
+        chat("")
+    elseif Summon_Vanish == true then
+        silentchat("Vanish!")
+        Summon_Vanish = false
+    end
+end)
